@@ -1,6 +1,28 @@
 var React = require('react');
 var ReactRouter = require('react-router-dom');
+var api = require('../utils/api.js');
 
+var axios = require('axios');
+
+const key = '0d29fbaa06dcff2656b75d959ff27d9f';
+
+
+
+
+
+
+function fetchWeather (zipCode){
+var encodedURI = window.encodeURI("http://api.openweathermap.org/data/2.5/weather?zip=67214,us&APPID=0d29fbaa06dcff2656b75d959ff27d9f");
+//http://api.openweathermap.org/data/2.5/weather?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY
+	
+return axios.get(encodedURI)
+.then(function (response){
+	console.log(response);
+	  });
+	}
+;
+
+fetchWeather(67214);
 
 
 class App extends React.Component {
