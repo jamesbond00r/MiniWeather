@@ -10,10 +10,25 @@ background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, F
 	justify-content: center;
 	align-items: center;
 	padding: 125px;
+		
 }
 
+.headerCon {
+	display: flex;
+	flex-direction: row;
+	border: solid #FFC371 2px;
+}
+
+.header {
+	margin-left: auto;
+}
+
+
+
 .title {
-	color: #f9f9f9
+	color: #f9f9f9;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin: 10px;
 }
 
 .grnBtn {
@@ -30,6 +45,6 @@ background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, F
 
 .inputBox {
 	padding: 5px;
-	margin-bottom: 5px;
+	margin: 10px;
 	
 }
