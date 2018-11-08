@@ -1,0 +1,35 @@
+body {
+	background: #FF5F6D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.homePage{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 125px;
+}
+
+.title {
+	color: #f9f9f9
+}
+
+.grnBtn {
+	background-color: #24d84b;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 4px;
+	
+}
+
+.inputBox {
+	padding: 5px;
+	margin-bottom: 5px;
+	
+}
