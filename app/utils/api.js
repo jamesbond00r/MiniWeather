@@ -1,19 +1,54 @@
 var axios = require('axios');
 
-const key = '0d29fbaa06dcff2656b75d959ff27d9f';
+const _APIKEY = '0d29fbaa06dcff2656b75d959ff27d9f';
+var _baseURL = "http://api.openweathermap.org/data/2.5/";
 
 
 
+//preps the route to make the api call
+
+
+function prepRouteParams (queryStringData) {
+	return Object.keys(queryStringData)
+	.map(function (key){
+		return key + '=' + encodedURIComponent(queryStringData[key]);
+	}).join('&')
+}
+
+function prepUrl (type, queryStringData){
+	return _baseURL + type + '?' + prepRouteParams(queryStringData);
+}
+
+function  getQueryStringData (city) {
+	return {
+		q: city,
+		type: 'accurate',
+		APPID: _APIKEY,
+		cnt: 5
+	}
+}
+
+function getCurrentWeather (city) {
+  var queryStringData = getQueryStringData(city);
+  var url = prepUrl('weather', queryStringData)
+
+  return axios.get(url)
+    .then(function (currentWeatherData) {
+      return currentWeatherData.data
+    })
+}
+
+function getForcast (city) {
+	var queryStringData = getQueryStringData(city);
+	var url = prepUrl('forecast/daily', queryStringData)
+
+	return axios.get(url)
+	.then(function (forcastData) {
+		return forcastData.data
+	})
+}
 
 module.exports = {
-
-fetchWeather: function fetchWeather (zipCode){
-var encodedURI = window.encodeURI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&APPID=" + key);
-//http://api.openweathermap.org/data/2.5/weather?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY
-	
-return axios.get(encodedURI)
-.then(function (response){
-	console.log(response);
-	  });
-	}
+	getCurrentWeather: getCurrentWeather,
+	getForcast: getForcast
 };
